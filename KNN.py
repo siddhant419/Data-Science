@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+import matplotlib.pyplot as plt
 def moiley(classifier,sets,age,people_class,k,df,cls):
     diffrence=[]
     i=0
@@ -18,13 +18,17 @@ def moiley(classifier,sets,age,people_class,k,df,cls):
                 pass
         print("Dataset aquired on Iteration {0} is:{1} and Clases are:{2}".format(j,sets,cls))
             
-            
     print("***************************************************************************")
     print("The middle age group which based on classifier is:{0}".format(classifier))
     print("***************The K-nearest neighbour result is**************************")
     for i in range(len(sets)):
         print(sets[i],cls[i])
-            
+    
+    plt.plot(sets,cls)
+    plt.title("Age Data")
+    plt.xlabel("Age of person")
+    plt.ylabel("Categorie of person")
+    plt.show()            
 sets=[]
 cls=[]
 df=pd.read_csv("gender-samples.csv")
@@ -42,10 +46,3 @@ for j in range(k):
     cls.append(people_class[j])
 
 moiley(classifier,sets,age,people_class,k,df,cls)
-
-
-
-
-
-
-
